@@ -1,0 +1,319 @@
+﻿Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Project description,Priority,Resolution,Assignee,Assignee Id,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Resolved,Due date,Votes,Description,Environment,Watchers,Watchers Id,Original estimate,Remaining Estimate,Time Spent,Work Ratio,Σ Original Estimate,Σ Remaining Estimate,Σ Time Spent,Security Level,Attachment,Attachment,Attachment,Custom field (Development),Custom field (Issue color),Custom field (Rank),Custom field (Start date),Custom field (Team),Status Category,Status Category Changed
+"Currency format inconsistent across EUR, GBP and USD",KAN-18,10091,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Low,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,25/Jan/26 1:52 PM,26/Jan/26 4:28 PM,26/Jan/26 4:25 PM,,,0,"Currency symbols are displayed in different positions depending on the selected currency, which breaks UI consistency and may confuse users.
+
+*Steps to Reproduce:*
+
+# Open [https://demo.opencart.com|https://demo.opencart.com/]
+# Change currency to EUR
+# Observe price format
+# Change currency to GBP
+# Observe price format
+# Change currency to USD
+# Observe price format
+
+*Actual Result:*
+
+* EUR is displayed as {{104.85€}}
+* GBP is displayed as {{£92.34}}
+* USD is displayed as {{$122.00}}
+* Currency symbol position is inconsistent
+
+*Expected Result:*
+All currencies should follow a consistent formatting pattern (e.g., symbol always before or always after the value).
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+
+
+!KAN-18(1).png|width=250,alt=""KAN-18(1).png""!
+
+!KAN-18(2).png|width=250,alt=""KAN-18(2).png""!
+
+!KAN-18.png|width=250,alt=""KAN-18.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,26/Jan/26 4:28 PM;56b5c518-60af-4883-954f-52b668fd31a4;KAN-18(1).png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10151,26/Jan/26 4:28 PM;56b5c518-60af-4883-954f-52b668fd31a4;KAN-18(2).png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10150,26/Jan/26 4:28 PM;56b5c518-60af-4883-954f-52b668fd31a4;KAN-18.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10152,,,0|i0005z:,,,To Do,25/Jan/26 1:52 PM
+"Quantity field accepts invalid values (0, large numbers, special characters",KAN-17,10090,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,High,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,25/Jan/26 1:02 PM,26/Jan/26 4:25 PM,26/Jan/26 4:22 PM,,,0,"The quantity input field does not validate user input and allows invalid values, causing incorrect cart behavior and price calculation issues.
+
+*Steps to Reproduce:*
+
+# Open any product page
+# Enter {{0}} into the quantity field
+# Click “Add to Cart”
+# Observe cart behavior
+# Repeat using a very large number (e.g., {{99999999999999}})
+# Repeat using special characters (e.g., {{+}}, {{@}})
+
+*Actual Result:*
+
+* Invalid values are accepted
+* Product is added to cart
+* Total price is calculated incorrectly
+* Special characters may remove the product from the cart
+
+*Expected Result:*
+Quantity field should validate input (min = 1, max = reasonable limit). Invalid values should trigger a validation error and prevent adding the product.
+
+*Reproducibility:* Always
+*Severity:* Critical
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!KAN-17.png|width=250,alt=""KAN-17.png""!
+
+!KAN-17(2).png|width=250,alt=""KAN-17(2).png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,26/Jan/26 4:25 PM;56b5c518-60af-4883-954f-52b668fd31a4;KAN-17(2).png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10149,26/Jan/26 4:25 PM;56b5c518-60af-4883-954f-52b668fd31a4;KAN-17.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10148,,,,0|i0005r:,,,To Do,25/Jan/26 1:02 PM
+Poor SEO configuration detected by Lighthouse,KAN-16,10057,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Low,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 7:43 PM,26/Jan/26 12:00 PM,26/Jan/26 4:21 PM,,,0,"A Lighthouse audit reveals multiple SEO issues that negatively affect search engine visibility and indexability.
+
+*Steps to Reproduce:*
+
+# Open [https://demo.opencart.com|https://demo.opencart.com/]
+# Open Chrome DevTools → Lighthouse
+# Run audit with default settings
+
+*Actual Result:*
+
+* SEO score: 36/100
+* Page blocked from indexing (HTTP 403)
+* robots.txt contains multiple errors
+* Meta description missing
+
+*Expected Result:*
+Page should be indexable and follow basic SEO best practices (valid robots.txt, correct HTTP status, meta description present).
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Lighthouse audit
+
+!image-20260124-184348.png|width=671,alt=""image-20260124-184348.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 7:43 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-184348.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10043,,,,,0|i0005j:,,,To Do,24/Jan/26 7:43 PM
+Out-of-stock products can be added to cart without warning,KAN-15,10056,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Highest,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:42 PM,26/Jan/26 12:21 PM,26/Jan/26 4:21 PM,,,0,"Products marked as out of stock can still be added to the cart without any warning on the product page.
+
+*Steps to Reproduce:*
+
+# Open any product page
+# Click “Add to Cart”
+# Open Shopping Cart
+
+*Actual Result:*
+Product is added successfully. Only a generic warning appears in the cart.
+
+*Expected Result:*
+User should be warned on the product page. “Add to Cart” should be disabled or show a clear out‑of‑stock message.
+
+*Reproducibility:* Always
+*Severity:* Critical
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260126-112114.png|width=596,alt=""image-20260126-112114.png""!
+
+!image-20260126-112148.png|width=596,alt=""image-20260126-112148.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,26/Jan/26 12:21 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260126-112114.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10115,26/Jan/26 12:21 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260126-112148.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10114,,,,0|i0005b:,,,To Do,24/Jan/26 6:42 PM
+Test and irrelevant data displayed in product options on product page,KAN-14,10055,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Low,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:33 PM,26/Jan/26 4:00 PM,26/Jan/26 4:21 PM,,,0,"Product option fields contain placeholder/test values that are not related to the actual product.
+
+*Steps to Reproduce:*
+
+# Open product “Apple Cinema 30”
+# Scroll to “Available Options”
+
+*Actual Result:*
+Options contain placeholder/test values (e.g., “test”, “Textarea”, fixed dates).
+
+*Expected Result:*
+Product options should contain only meaningful, product‑related values.
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260126-111652.png|width=678,alt=""image-20260126-111652.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,26/Jan/26 12:16 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260126-111652.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10113,,,,,0|i00053:,,,To Do,24/Jan/26 6:33 PM
+"Product count is incorrect in ""Laptops & Notebooks"" category",KAN-13,10054,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:29 PM,26/Jan/26 12:22 PM,26/Jan/26 4:21 PM,,,0,"The category product count does not match the actual number of available products, which misleads users.
+
+*Steps to Reproduce:*
+
+# Open “Laptops & Notebooks” category
+# Note displayed product count in the left menu
+# Observe the product list
+
+*Actual Result:*
+
+* Category shows “(5)”
+* No products are displayed
+* Subcategories show 0 products
+
+*Expected Result:*
+Displayed count should match the actual number of available products.
+
+*Reproducibility:* Always
+*Severity:* Major
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260124-172857.png|width=526,alt=""image-20260124-172857.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 6:29 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-172857.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10039,,,,,0|i0004v:,,,To Do,24/Jan/26 6:29 PM
+"Subcategory product counts are inconsistent in ""MP3 Players"" category",KAN-12,10053,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:15 PM,26/Jan/26 12:23 PM,26/Jan/26 4:20 PM,,,0,"The total category count does not match subcategory product counts, indicating incorrect product assignment or counting logic.
+
+*Steps to Reproduce:*
+
+# Open “MP3 Players” category
+# Observe category total count
+# Observe subcategory counts
+
+*Actual Result:*
+Category shows “(4)”, but all subcategories show 0 products.
+
+*Expected Result:*
+Total count should match the sum of subcategory counts OR products should be assigned correctly.
+
+*Reproducibility:* Always
+*Severity:* Major
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260124-171442.png|width=530,alt=""image-20260124-171442.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 6:15 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-171442.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10038,,,,,0|i0004n:,,,To Do,24/Jan/26 6:15 PM
+"Test subcategories are visible to users in ""MP3 Players"" category",KAN-11,10052,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:14 PM,26/Jan/26 12:23 PM,26/Jan/26 4:20 PM,,,0,"Internal test subcategories are visible to users, which degrades UI quality and creates confusion.
+
+*Steps to Reproduce:*
+
+# Open “MP3 Players” category
+# Observe “Refine Search” section
+
+*Actual Result:*
+Subcategories like “test 11”, “test 12”, etc. are visible.
+
+*Expected Result:*
+Only meaningful, user‑friendly categories should be shown.
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260124-171352.png|width=530,alt=""image-20260124-171352.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 6:14 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-171352.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10037,,,,,0|i0004f:,,,To Do,24/Jan/26 6:14 PM
+"Incorrect product count displayed for ""Desktops"" category",KAN-10,10051,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:10 PM,26/Jan/26 12:24 PM,26/Jan/26 4:20 PM,,,0,"The displayed product count does not match the actual number of products available in subcategories.
+
+*Steps to Reproduce:*
+
+# Open “Desktops” category
+# Note displayed category count
+# Observe subcategory counts
+
+*Actual Result:*
+Category shows “(13)”, but subcategories show only 1 product total.
+
+*Expected Result:*
+Displayed count should match the actual number of products.
+
+*Reproducibility:* Always
+*Severity:* Major
+*Environment:* Windows 10 / Chrome 122 / Demo environmenty.
+
+!image-20260124-171042.png|width=526,alt=""image-20260124-171042.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 6:10 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-171042.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10036,,,,,0|i00047:,,,To Do,24/Jan/26 6:10 PM
+"Missing product filters (price, brand, memory, etc.) on category page",KAN-9,10050,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 6:01 PM,26/Jan/26 12:24 PM,26/Jan/26 4:20 PM,,,0,"The category page lacks standard filtering options, limiting user ability to refine product listings.
+
+*Steps to Reproduce:*
+
+# Open any category page
+# Check available filters
+
+*Actual Result:*
+Only subcategory filters are available. No price, brand, or memory filters.
+
+*Expected Result:*
+Category page should include standard product filters (e.g., price, brand, memory).
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+
+
+!image-20260124-170101.png|width=526,alt=""image-20260124-170101.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 6:01 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-170101.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10034,,,,,0|i0003z:,,,To Do,24/Jan/26 6:01 PM
+"Category dropdown contains invalid test categories (test 1, test 2, etc.)",KAN-8,10049,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 5:35 PM,26/Jan/26 12:24 PM,26/Jan/26 4:20 PM,,,0,"The category dropdown includes placeholder/test categories that should not be visible to users.
+
+*Steps to Reproduce:*
+
+# Perform a search
+# Open category dropdown
+
+*Actual Result:*
+Dropdown contains “test 1”, “test 2”, etc.
+
+*Expected Result:*
+Only real, user‑friendly categories should be displayed.
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+
+
+!image-20260124-170321.png|width=259,alt=""image-20260124-170321.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,24/Jan/26 6:03 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260124-170321.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10035,,,,,0|i0003r:,,,To Do,24/Jan/26 5:35 PM
+Category filter is not discoverable and confusing on search page,KAN-7,10048,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Medium,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 5:34 PM,26/Jan/26 12:25 PM,26/Jan/26 4:20 PM,,,0,"Users cannot filter by category from the homepage; the filter only appears after performing a search.
+
+*Steps to Reproduce:*
+
+# Open homepage
+# Try to locate category filter
+# Perform a search
+# Observe category dropdown
+
+*Actual Result:*
+Category filter is not available on homepage; only appears after search.
+
+*Expected Result:*
+Category filter should be accessible directly from homepage.
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260125-123248.png|width=667,alt=""image-20260125-123248.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,25/Jan/26 1:32 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260125-123248.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10077,,,,,0|i0003j:,,,To Do,24/Jan/26 5:34 PM
+Product is removed from cart when entering special characters into quantity field,KAN-6,10047,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,High,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,24/Jan/26 5:12 PM,26/Jan/26 12:25 PM,26/Jan/26 4:18 PM,,,0,"Entering special characters into the quantity field causes the product to be removed from the cart instead of showing a validation error.
+
+*Steps to Reproduce:*
+
+# Add any product to cart
+# Open Shopping Cart
+# Enter special characters (e.g., {{+}}, {{@}}) into quantity field
+# Click “Update”
+
+*Actual Result:*
+Product is removed from cart.
+
+*Expected Result:*
+System should prevent invalid input, display a validation error, and keep the product in the cart.
+
+*Reproducibility:* Always
+*Severity:* Critical
+*Environment:* Windows 10 / Chrome 122 / Demo environment",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,,,,,,0|i0003b:,,,To Do,24/Jan/26 5:12 PM
+"Product image is missing for ""Product 8"" on catalog page",KAN-5,10014,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Low,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,23/Jan/26 3:55 PM,26/Jan/26 4:00 PM,26/Jan/26 4:19 PM,,,0,"Product “Product 8” does not display an image on both catalog and product pages, resulting in a broken or empty image container.
+
+*Steps to Reproduce:*
+
+# Open “Desktops” category
+# Scroll to page 2
+# Locate “Product 8”
+# Click on “Product 8”
+
+*Actual Result:*
+Product image is missing; placeholder or empty image area is shown.
+
+*Expected Result:*
+Product should display a valid image. Placeholder should only be used as fallback.
+
+*Reproducibility:* Always
+*Severity:* Minor
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260123-145903.png|width=678,alt=""image-20260123-145903.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,23/Jan/26 3:59 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260123-145903.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10000,,,,,0|i00033:,,,To Do,23/Jan/26 3:55 PM
+Users are blocked by Cloudflare Error 1015 (Rate Limited) when accessing account pages,KAN-4,10013,Bug,To Do,KAN,Andrii Snihur QA,software,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Your first project,Highest,,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,23/Jan/26 3:34 PM,26/Jan/26 12:26 PM,26/Jan/26 4:19 PM,,,0,"Users are blocked by Cloudflare rate limiting while navigating normally through the site, preventing further usage.
+
+*Steps to Reproduce:*
+
+# Navigate through multiple pages
+# Reload pages several times
+# Observe Cloudflare error
+
+*Actual Result:*
+User is blocked with Error 1015. Access to the site is temporarily denied.
+
+*Expected Result:*
+User should not be rate‑limited during normal navigation.
+
+*Reproducibility:* Sometimes
+*Severity:* Blocker
+*Environment:* Windows 10 / Chrome 122 / Demo environment
+
+!image-20260123-150609.png|width=309,alt=""image-20260123-150609.png""!",,Andrii Snihur,712020:19af62b6-8651-4fef-82f8-c5375c206a42,,,,,,,,,23/Jan/26 4:06 PM;56b5c518-60af-4883-954f-52b668fd31a4;image-20260123-150609.png;https://andrii-snihur-testing.atlassian.net/rest/api/3/attachment/content/10001,,,,,0|i0002v:,,,To Do,23/Jan/26 3:34 PM
