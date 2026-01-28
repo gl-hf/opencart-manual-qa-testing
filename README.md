@@ -52,6 +52,8 @@ Some flows (e.g., checkout, account pages) were partially blocked due to **Cloud
 ## Repository Structure
 
 ---
+
+```text
 /OpenCart-QA-Project
 │
 ├── README.md
@@ -71,6 +73,7 @@ Some flows (e.g., checkout, account pages) were partially blocked due to **Cloud
 │
 └── /lighthouse
       └── lighthouse-report.html
+```
 
 ---
 
@@ -112,5 +115,6 @@ It is intended as a portfolio project to showcase real QA workflow and testing m
 ---
 
 ## Author
+
 
 Andrii Snihur (2026)
